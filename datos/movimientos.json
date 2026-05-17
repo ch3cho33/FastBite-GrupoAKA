@@ -1,0 +1,123 @@
+[
+  {
+    "id": "9464de9b-e7ae-414e-8c24-797c5e59260a",
+    "ingredienteId": "6a51f10a-756c-4ab1-8a84-a6ca0aad7ff3",
+    "nombreIngrediente": "Harina de trigo",
+    "tipo": "ENTRADA",
+    "cantidad": 50.0,
+    "stockAntes": 50.0,
+    "stockDespues": 0.0,
+    "fecha": "2026-05-17T15:50:25.615291",
+    "referencia": "REGISTRO INICIAL"
+  },
+  {
+    "id": "44c95a3b-78fb-402b-b082-4d8f7bef0ead",
+    "ingredienteId": "194798f8-7881-414f-8a3a-e7dad1903a49",
+    "nombreIngrediente": "Aceite de cocina",
+    "tipo": "ENTRADA",
+    "cantidad": 20.0,
+    "stockAntes": 20.0,
+    "stockDespues": 0.0,
+    "fecha": "2026-05-17T15:50:25.619264",
+    "referencia": "REGISTRO INICIAL"
+  },
+  {
+    "id": "b75d3975-c94b-4c1f-a337-75c2cec35b6d",
+    "ingredienteId": "01485ec6-ef5d-46b7-ac34-a0f97537e9a5",
+    "nombreIngrediente": "Sal",
+    "tipo": "ENTRADA",
+    "cantidad": 10.0,
+    "stockAntes": 10.0,
+    "stockDespues": 0.0,
+    "fecha": "2026-05-17T15:50:25.620118",
+    "referencia": "REGISTRO INICIAL"
+  },
+  {
+    "id": "3a9596f3-0145-4be2-b7c1-422cd425e74c",
+    "ingredienteId": "8aa2f624-d27f-4804-8d33-89e34abd3291",
+    "nombreIngrediente": "Tomate",
+    "tipo": "ENTRADA",
+    "cantidad": 30.0,
+    "stockAntes": 30.0,
+    "stockDespues": 0.0,
+    "fecha": "2026-05-17T15:50:25.621022",
+    "referencia": "REGISTRO INICIAL"
+  },
+  {
+    "id": "44c36a00-88a3-4e1c-b3bb-53ab177b1130",
+    "ingredienteId": "476f32db-45a6-494a-9811-ae99ee936054",
+    "nombreIngrediente": "Carne molida",
+    "tipo": "ENTRADA",
+    "cantidad": 15.0,
+    "stockAntes": 15.0,
+    "stockDespues": 0.0,
+    "fecha": "2026-05-17T15:50:25.62186",
+    "referencia": "REGISTRO INICIAL"
+  },
+  {
+    "id": "520c4bf6-22f3-4816-9668-5d3d50838eaf",
+    "ingredienteId": "5fcc35b1-f8a6-44c2-b128-c92c38368ef8",
+    "nombreIngrediente": "Pan hamburguesa",
+    "tipo": "ENTRADA",
+    "cantidad": 40.0,
+    "stockAntes": 40.0,
+    "stockDespues": 0.0,
+    "fecha": "2026-05-17T15:50:25.622567",
+    "referencia": "REGISTRO INICIAL"
+  },
+  {
+    "id": "b81da78b-c240-4124-9f57-d57c9be132bc",
+    "ingredienteId": "8fb8c7aa-12d6-4ecb-b076-062d709ddbea",
+    "nombreIngrediente": "Lechuga",
+    "tipo": "ENTRADA",
+    "cantidad": 5.0,
+    "stockAntes": 5.0,
+    "stockDespues": 0.0,
+    "fecha": "2026-05-17T15:50:25.623215",
+    "referencia": "REGISTRO INICIAL"
+  },
+  {
+    "id": "fd694b93-a8d3-483f-8fec-e4570f20a58d",
+    "ingredienteId": "d4d4360c-bbac-4cc8-b883-1058b795d2f0",
+    "nombreIngrediente": "Queso",
+    "tipo": "ENTRADA",
+    "cantidad": 4.0,
+    "stockAntes": 4.0,
+    "stockDespues": 0.0,
+    "fecha": "2026-05-17T15:50:25.623895",
+    "referencia": "REGISTRO INICIAL"
+  },
+  {
+    "id": "baaac2b2-044d-42cd-ac31-25dfd0eb7144",
+    "ingredienteId": "c1f6c66b-b2b5-4507-9d52-072b647135a2",
+    "nombreIngrediente": "Papas",
+    "tipo": "ENTRADA",
+    "cantidad": 25.0,
+    "stockAntes": 25.0,
+    "stockDespues": 0.0,
+    "fecha": "2026-05-17T15:50:25.626382",
+    "referencia": "REGISTRO INICIAL"
+  },
+  {
+    "id": "63636ff0-a809-4a6e-a5f8-30627213fbeb",
+    "ingredienteId": "8342f992-525b-4d8c-8de3-d3fa5319bd4b",
+    "nombreIngrediente": "Pollo",
+    "tipo": "ENTRADA",
+    "cantidad": 2.0,
+    "stockAntes": 2.0,
+    "stockDespues": 0.0,
+    "fecha": "2026-05-17T15:50:25.627154",
+    "referencia": "REGISTRO INICIAL"
+  },
+  {
+    "id": "9d6ee7de-6df6-4c90-9f00-37423971665e",
+    "ingredienteId": "95d0780a-9363-4eb6-b5c9-574de14d3502",
+    "nombreIngrediente": "Pimienta",
+    "tipo": "ENTRADA",
+    "cantidad": 50.0,
+    "stockAntes": 50.0,
+    "stockDespues": 0.0,
+    "fecha": "2026-05-17T16:21:09.252413",
+    "referencia": "REGISTRO INICIAL"
+  }
+]

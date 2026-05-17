@@ -1,0 +1,79 @@
+[
+  {
+    "id": "f5b96f0b-3b2c-40cb-8e9a-0b97c4b7eb98",
+    "numeroPedido": "P-5628",
+    "tipoPedido": "Mesa",
+    "estado": "PENDIENTE",
+    "items": [
+      {
+        "id": "563274f9-d1e4-43c5-aca0-096cd3a4a76a",
+        "productoId": "7339a8df-9bfd-4d00-8c7c-d43db8438165",
+        "nombreProducto": "Hamburguesa Clásica",
+        "cantidad": 2,
+        "precioUnitario": 18000.0,
+        "subtotal": 36000.0,
+        "estado": "PENDIENTE"
+      },
+      {
+        "id": "db9bd246-3d5f-4d5e-8bf7-91b51cc252cb",
+        "productoId": "d4588686-c4d7-4394-85d1-589b2e1f906b",
+        "nombreProducto": "Papas Fritas",
+        "cantidad": 1,
+        "precioUnitario": 8000.0,
+        "subtotal": 8000.0,
+        "estado": "PENDIENTE"
+      }
+    ],
+    "subtotal": 44000.0,
+    "iva": 8360.0,
+    "total": 52360.0,
+    "fechaCreacion": "2026-05-17T15:50:25.628292",
+    "fechaActualizacion": "2026-05-17T15:50:25.63051",
+    "observaciones": "Sin cebolla en la hamburguesa."
+  },
+  {
+    "id": "3b7545ee-ea74-4c31-b69d-11e849fd4c60",
+    "numeroPedido": "P-5631",
+    "tipoPedido": "Llevar",
+    "estado": "LISTO",
+    "items": [
+      {
+        "id": "f006b29a-2003-465d-be2d-642d9d4f8400",
+        "productoId": "0d7ff2f1-fb80-4ade-b3a5-b7f55cce03d9",
+        "nombreProducto": "Pechuga a la Plancha",
+        "cantidad": 1,
+        "precioUnitario": 15000.0,
+        "subtotal": 15000.0,
+        "estado": "LISTO"
+      }
+    ],
+    "subtotal": 15000.0,
+    "iva": 2850.0,
+    "total": 17850.0,
+    "fechaCreacion": "2026-05-17T15:50:25.631737",
+    "fechaActualizacion": "2026-05-17T16:09:05.571068"
+  },
+  {
+    "id": "f91bfcf9-e2b9-41ac-aec6-3e19e9c54222",
+    "numeroPedido": "P-5632",
+    "tipoPedido": "Domicilio",
+    "estado": "LISTO",
+    "items": [
+      {
+        "id": "c9ca8909-76d1-4227-85d9-83d3d75e202e",
+        "productoId": "77ec8595-8182-4b3f-a72b-1866478b49f9",
+        "nombreProducto": "Combo Familiar",
+        "cantidad": 1,
+        "precioUnitario": 45000.0,
+        "subtotal": 45000.0,
+        "estado": "LISTO"
+      }
+    ],
+    "subtotal": 45000.0,
+    "iva": 8550.0,
+    "total": 53550.0,
+    "fechaCreacion": "2026-05-17T15:50:25.632389",
+    "fechaActualizacion": "2026-05-17T16:09:07.586695",
+    "observaciones": "Entregar antes de las 7pm."
+  }
+]

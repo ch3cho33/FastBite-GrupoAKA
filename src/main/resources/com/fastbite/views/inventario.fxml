@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.fastbite.controller.InventarioViewController"
+            stylesheets="@fastbite.css">
+
+    <top>
+        <HBox styleClass="header-bar" alignment="CENTER_LEFT" spacing="16">
+            <padding><Insets top="12" right="20" bottom="12" left="20"/></padding>
+            <Label text="FastBite - Modulo de Inventario" styleClass="header-title"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="Actualizar" styleClass="btn-secondary" onAction="#handleActualizar"/>
+        </HBox>
+    </top>
+
+    <center>
+        <TabPane tabClosingPolicy="UNAVAILABLE">
+
+            <!-- TAB INGREDIENTES -->
+            <Tab text="Ingredientes">
+                <HBox spacing="12">
+                    <padding><Insets top="12" right="12" bottom="12" left="12"/></padding>
+
+                    <!-- LADO IZQUIERDO: tabla -->
+                    <VBox spacing="10" HBox.hgrow="ALWAYS">
+                        <Label text="Ingredientes en Stock" styleClass="panel-title"/>
+
+                        <HBox spacing="8" alignment="CENTER_LEFT">
+                            <TextField fx:id="txtBusqueda" promptText="Buscar ingrediente..."
+                                       HBox.hgrow="ALWAYS" onKeyReleased="#handleBuscar"/>
+                            <Button text="Buscar" onAction="#handleBuscar" styleClass="btn-secondary"/>
+                        </HBox>
+
+                        <TableView fx:id="tablaIngredientes" VBox.vgrow="ALWAYS"
+                                   onMouseClicked="#handleSeleccionarIngrediente">
+                            <columns>
+                                <TableColumn fx:id="colNombre"    text="Ingrediente" prefWidth="160"/>
+                                <TableColumn fx:id="colCantidad"  text="Stock"       prefWidth="80"/>
+                                <TableColumn fx:id="colUnidad"    text="Unidad"      prefWidth="80"/>
+                                <TableColumn fx:id="colStockMin"  text="Stock Min."  prefWidth="90"/>
+                                <TableColumn fx:id="colEstadoIng" text="Estado"      prefWidth="90"/>
+                            </columns>
+                            <placeholder><Label text="No hay ingredientes registrados"/></placeholder>
+                        </TableView>
+
+                        <HBox spacing="8">
+                            <Button text="+ Nuevo" styleClass="btn-primary" onAction="#handleNuevoIngrediente"/>
+                            <Button fx:id="btnEliminar" text="Eliminar" styleClass="btn-danger"
+                                    onAction="#handleEliminarIngrediente" disable="true"/>
+                        </HBox>
+                    </VBox>
+
+                    <!-- LADO DERECHO: formulario -->
+                    <VBox spacing="14" minWidth="340" prefWidth="340">
+                        <padding><Insets top="4" right="4" bottom="4" left="4"/></padding>
+                        <Label fx:id="lblTituloFormulario" text="Registrar Ingrediente" styleClass="panel-title"/>
+
+                        <!-- Nombre -->
+                        <VBox spacing="4">
+                            <Label text="Nombre *" styleClass="field-label"/>
+                            <TextField fx:id="txtNombre" promptText="Ej: Harina de trigo"
+                                       maxWidth="Infinity" prefWidth="300"/>
+                        </VBox>
+
+                        <!-- Cantidad -->
+                        <VBox spacing="4">
+                            <Label text="Cantidad actual *" styleClass="field-label"/>
+                            <TextField fx:id="txtCantidad" promptText="Ej: 25.5"
+                                       maxWidth="Infinity" prefWidth="300"/>
+                        </VBox>
+
+                        <!-- Unidad -->
+                        <VBox spacing="4">
+                            <Label text="Unidad *" styleClass="field-label"/>
+                            <ComboBox fx:id="cmbUnidad" promptText="Seleccionar unidad"
+                                      maxWidth="Infinity" prefWidth="300"/>
+                        </VBox>
+
+                        <!-- Stock mínimo -->
+                        <VBox spacing="4">
+                            <Label text="Stock minimo *" styleClass="field-label"/>
+                            <TextField fx:id="txtStockMinimo" promptText="Ej: 5.0"
+                                       maxWidth="Infinity" prefWidth="300"/>
+                        </VBox>
+
+                        <Separator/>
+
+                        <!-- Entrada de stock -->
+                        <Label text="Registrar entrada de stock" styleClass="section-subtitle"/>
+                        <HBox spacing="8" alignment="CENTER_LEFT">
+                            <TextField fx:id="txtEntradaStock" promptText="Cantidad a ingresar"
+                                       HBox.hgrow="ALWAYS"/>
+                            <Button fx:id="btnAgregarStock" text="Agregar stock"
+                                    styleClass="btn-success"
+                                    onAction="#handleRegistrarEntrada" disable="true"/>
+                        </HBox>
+
+                        <Region VBox.vgrow="ALWAYS"/>
+
+                        <!-- Botones guardar -->
+                        <HBox spacing="8" alignment="CENTER_RIGHT">
+                            <Button text="Limpiar" styleClass="btn-secondary"
+                                    onAction="#handleLimpiarFormulario"/>
+                            <Button fx:id="btnGuardar" text="Guardar" styleClass="btn-primary"
+                                    onAction="#handleGuardarIngrediente"/>
+                        </HBox>
+
+                        <Label fx:id="lblMensajeForm" styleClass="status-msg" wrapText="true"/>
+                    </VBox>
+                </HBox>
+            </Tab>
+
+            <!-- TAB ALERTAS -->
+            <Tab text="Alertas de Stock">
+                <VBox spacing="12">
+                    <padding><Insets top="16" right="16" bottom="16" left="16"/></padding>
+                    <HBox alignment="CENTER_LEFT" spacing="12">
+                        <Label text="Alertas de Stock Minimo" styleClass="panel-title"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Label fx:id="lblTotalAlertas" styleClass="badge-danger" text="0 alertas"/>
+                    </HBox>
+                    <TableView fx:id="tablaAlertas" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="colAlertaNivel"       text="Nivel"       prefWidth="100"/>
+                            <TableColumn fx:id="colAlertaIngrediente" text="Ingrediente" prefWidth="200"/>
+                            <TableColumn fx:id="colAlertaMensaje"     text="Mensaje"     prefWidth="400"/>
+                            <TableColumn fx:id="colAlertaFecha"       text="Fecha"       prefWidth="150"/>
+                        </columns>
+                        <placeholder><Label text="No hay alertas activas"/></placeholder>
+                    </TableView>
+                    <HBox spacing="8" alignment="CENTER_RIGHT">
+                        <Button text="Resolver seleccionada" styleClass="btn-outline"
+                                onAction="#handleResolverAlerta"/>
+                    </HBox>
+                </VBox>
+            </Tab>
+
+            <!-- TAB MOVIMIENTOS -->
+            <Tab text="Movimientos">
+                <VBox spacing="12">
+                    <padding><Insets top="16" right="16" bottom="16" left="16"/></padding>
+                    <Label text="Historial de Movimientos" styleClass="panel-title"/>
+                    <TableView fx:id="tablaMovimientos" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="colMovFecha"        text="Fecha"         prefWidth="150"/>
+                            <TableColumn fx:id="colMovTipo"         text="Tipo"          prefWidth="90"/>
+                            <TableColumn fx:id="colMovIngrediente"  text="Ingrediente"   prefWidth="180"/>
+                            <TableColumn fx:id="colMovCantidad"     text="Cantidad"      prefWidth="90"/>
+                            <TableColumn fx:id="colMovStockAntes"   text="Stock Antes"   prefWidth="100"/>
+                            <TableColumn fx:id="colMovStockDespues" text="Stock Despues" prefWidth="110"/>
+                            <TableColumn fx:id="colMovReferencia"   text="Referencia"    prefWidth="150"/>
+                        </columns>
+                        <placeholder><Label text="No hay movimientos registrados"/></placeholder>
+                    </TableView>
+                </VBox>
+            </Tab>
+
+        </TabPane>
+    </center>
+
+    <bottom>
+        <HBox styleClass="status-bar" alignment="CENTER_LEFT" spacing="20">
+            <padding><Insets top="8" right="16" bottom="8" left="16"/></padding>
+            <Label fx:id="lblTotalIngredientes" text="Total ingredientes: 0" styleClass="status-info"/>
+            <Label fx:id="lblBajoStock"         text="Bajo stock: 0"         styleClass="status-warning"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label fx:id="lblStatusMsg" styleClass="status-msg"/>
+        </HBox>
+    </bottom>
+</BorderPane>

@@ -1,0 +1,79 @@
+[
+  {
+    "id": "6a51f10a-756c-4ab1-8a84-a6ca0aad7ff3",
+    "nombre": "Harina de trigo",
+    "cantidad": 50.0,
+    "stockMinimo": 10.0,
+    "unidad": "kg"
+  },
+  {
+    "id": "194798f8-7881-414f-8a3a-e7dad1903a49",
+    "nombre": "Aceite de cocina",
+    "cantidad": 20.0,
+    "stockMinimo": 5.0,
+    "unidad": "litros"
+  },
+  {
+    "id": "01485ec6-ef5d-46b7-ac34-a0f97537e9a5",
+    "nombre": "Sal",
+    "cantidad": 10.0,
+    "stockMinimo": 2.0,
+    "unidad": "kg"
+  },
+  {
+    "id": "8aa2f624-d27f-4804-8d33-89e34abd3291",
+    "nombre": "Tomate",
+    "cantidad": 30.0,
+    "stockMinimo": 8.0,
+    "unidad": "kg"
+  },
+  {
+    "id": "476f32db-45a6-494a-9811-ae99ee936054",
+    "nombre": "Carne molida",
+    "cantidad": 15.0,
+    "stockMinimo": 5.0,
+    "unidad": "kg"
+  },
+  {
+    "id": "5fcc35b1-f8a6-44c2-b128-c92c38368ef8",
+    "nombre": "Pan hamburguesa",
+    "cantidad": 40.0,
+    "stockMinimo": 10.0,
+    "unidad": "unidades"
+  },
+  {
+    "id": "8fb8c7aa-12d6-4ecb-b076-062d709ddbea",
+    "nombre": "Lechuga",
+    "cantidad": 5.0,
+    "stockMinimo": 3.0,
+    "unidad": "kg"
+  },
+  {
+    "id": "d4d4360c-bbac-4cc8-b883-1058b795d2f0",
+    "nombre": "Queso",
+    "cantidad": 4.0,
+    "stockMinimo": 5.0,
+    "unidad": "kg"
+  },
+  {
+    "id": "c1f6c66b-b2b5-4507-9d52-072b647135a2",
+    "nombre": "Papas",
+    "cantidad": 25.0,
+    "stockMinimo": 8.0,
+    "unidad": "kg"
+  },
+  {
+    "id": "8342f992-525b-4d8c-8de3-d3fa5319bd4b",
+    "nombre": "Pollo",
+    "cantidad": 10.0,
+    "stockMinimo": 6.0,
+    "unidad": "kg"
+  },
+  {
+    "id": "95d0780a-9363-4eb6-b5c9-574de14d3502",
+    "nombre": "Pimienta",
+    "cantidad": 50.0,
+    "stockMinimo": 5.0,
+    "unidad": "kg"
+  }
+]

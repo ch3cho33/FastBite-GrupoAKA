@@ -1,0 +1,206 @@
+/* ─────────────────────────────────────────────────────
+   FastBite — Estilos globales JavaFX
+   ───────────────────────────────────────────────────── */
+
+/* === BASE === */
+.root {
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    -fx-font-size: 13px;
+    -fx-background-color: #f8fafc;
+}
+
+/* === HEADER BAR === */
+.header-bar {
+    -fx-background-color: #1e293b;
+    -fx-min-height: 52px;
+}
+.header-title {
+    -fx-text-fill: white;
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+}
+.header-info {
+    -fx-text-fill: #94a3b8;
+    -fx-font-size: 12px;
+}
+
+/* === PANELS === */
+.panel {
+    -fx-background-color: white;
+    -fx-border-color: #e2e8f0;
+    -fx-border-width: 1;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+}
+.panel-title {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1e293b;
+}
+.section-subtitle {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #64748b;
+}
+
+/* === FIELD LABELS === */
+.field-label {
+    -fx-font-weight: bold;
+    -fx-text-fill: #475569;
+}
+.field-value {
+    -fx-text-fill: #1e293b;
+}
+.field-value-highlight {
+    -fx-text-fill: #0f766e;
+    -fx-font-weight: bold;
+    -fx-font-size: 15px;
+}
+
+/* === BUTTONS === */
+.btn-primary {
+    -fx-background-color: #2563eb;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+    -fx-padding: 7 16 7 16;
+}
+.btn-primary:hover  { -fx-background-color: #1d4ed8; }
+.btn-primary:pressed { -fx-background-color: #1e40af; }
+
+.btn-success {
+    -fx-background-color: #16a34a;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+    -fx-padding: 7 16 7 16;
+}
+.btn-success:hover  { -fx-background-color: #15803d; }
+
+.btn-secondary {
+    -fx-background-color: #e2e8f0;
+    -fx-text-fill: #334155;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+    -fx-padding: 7 16 7 16;
+}
+.btn-secondary:hover { -fx-background-color: #cbd5e1; }
+
+.btn-outline {
+    -fx-background-color: transparent;
+    -fx-border-color: #2563eb;
+    -fx-text-fill: #2563eb;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+    -fx-padding: 6 14 6 14;
+}
+.btn-outline:hover { -fx-background-color: #eff6ff; }
+
+.btn-danger {
+    -fx-background-color: #dc2626;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+    -fx-padding: 7 16 7 16;
+}
+.btn-danger:hover { -fx-background-color: #b91c1c; }
+
+/* Botones deshabilitados */
+.button:disabled {
+    -fx-opacity: 0.45;
+    -fx-cursor: default;
+}
+
+/* === TABLES === */
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 4;
+}
+.table-view .column-header-background {
+    -fx-background-color: #f1f5f9;
+}
+.table-view .column-header .label {
+    -fx-font-weight: bold;
+    -fx-text-fill: #475569;
+}
+.table-row-cell:selected {
+    -fx-background-color: #dbeafe;
+    -fx-text-fill: #1e293b;
+}
+.table-row-cell:hover:!selected {
+    -fx-background-color: #f8fafc;
+}
+
+/* === LIST VIEW === */
+.list-view {
+    -fx-background-color: white;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 4;
+}
+.list-cell:selected {
+    -fx-background-color: #dbeafe;
+    -fx-text-fill: #1e293b;
+}
+.list-cell:hover:!selected {
+    -fx-background-color: #f8fafc;
+}
+.pedidos-list .list-cell {
+    -fx-padding: 8 12 8 12;
+    -fx-border-color: transparent transparent #f1f5f9 transparent;
+}
+
+/* === STATUS BAR === */
+.status-bar {
+    -fx-background-color: #f1f5f9;
+    -fx-border-color: #e2e8f0 transparent transparent transparent;
+    -fx-min-height: 34px;
+}
+.status-info    { -fx-text-fill: #475569; -fx-font-size: 12px; }
+.status-warning { -fx-text-fill: #d97706; -fx-font-size: 12px; -fx-font-weight: bold; }
+.status-msg     { -fx-font-size: 12px; }
+
+/* === BADGES === */
+.badge-danger {
+    -fx-background-color: #fee2e2;
+    -fx-text-fill: #dc2626;
+    -fx-font-weight: bold;
+    -fx-background-radius: 12;
+    -fx-padding: 2 10 2 10;
+}
+
+/* === OBSERVACIONES === */
+.observaciones {
+    -fx-text-fill: #64748b;
+    -fx-font-style: italic;
+    -fx-padding: 4;
+}
+
+/* === SPLIT PANE === */
+.split-pane > .split-pane-divider {
+    -fx-background-color: #e2e8f0;
+    -fx-padding: 0 1 0 1;
+}
+
+/* === TAB PANE === */
+.tab-pane > .tab-header-area > .tab-header-background {
+    -fx-background-color: #f1f5f9;
+}
+.tab:selected { -fx-background-color: white; }
+.tab .tab-label { -fx-font-size: 13px; }
+
+/* === TEXT FIELDS / COMBO === */
+.text-field, .combo-box {
+    -fx-background-color: white;
+    -fx-border-color: #cbd5e1;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-padding: 5 8 5 8;
+}
+.text-field:focused, .combo-box:focused {
+    -fx-border-color: #2563eb;
+}
