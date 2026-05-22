@@ -1,5 +1,6 @@
 package com.fastbite;
 
+
 import com.fastbite.controller.CocinaController;
 import com.fastbite.controller.InventarioController;
 import com.fastbite.util.DatosPrueba;
@@ -9,16 +10,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
-/**
- * Punto de entrada de la aplicación FastBite.
- * Carga la ventana principal con navegación por tabs.
- */
 public class MainApp extends Application {
 
     private static final String TITULO = "FastBite — Sistema de Gestión";
@@ -27,21 +22,26 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        // Cargar datos de muestra primero (opcional)
+        DatosPrueba.cargar();
+
         TabPane tabPane = new TabPane();
         tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
 
-        // ── Módulo de Cocina ──────────────────────────────────────
+        // Módulo Cocina
         Tab tabCocina = new Tab("🍳 Cocina");
         tabCocina.setContent(cargarVista("/com/fastbite/views/cocina.fxml"));
 
-        // ── Módulo de Inventario ──────────────────────────────────
+        // Módulo Inventario
         Tab tabInventario = new Tab("📦 Inventario");
         tabInventario.setContent(cargarVista("/com/fastbite/views/inventario.fxml"));
 
-        tabPane.getTabs().addAll(tabCocina, tabInventario);
+        // Módulo Fidelización (Cliente)
+        Tab tabFidelizacion = new Tab("Fidelización");
+        tabFidelizacion.setContent(cargarVista("/com/fastbite/views/Cliente.fxml"));
 
-        // Carga datos de muestra si no existen archivos persistidos
-        DatosPrueba.cargar();
+        // Agregar todas las pestañas
+        tabPane.getTabs().addAll(tabCocina, tabInventario, tabFidelizacion);
 
         Scene scene = new Scene(tabPane, ANCHO, ALTO);
         primaryStage.setTitle(TITULO);
@@ -49,7 +49,6 @@ public class MainApp extends Application {
         primaryStage.setMinWidth(900);
         primaryStage.setMinHeight(600);
 
-        // Guardar datos al cerrar la aplicación
         primaryStage.setOnCloseRequest(e -> {
             CocinaController.getInstance().guardarDatos();
             InventarioController.getInstance().guardarDatos();

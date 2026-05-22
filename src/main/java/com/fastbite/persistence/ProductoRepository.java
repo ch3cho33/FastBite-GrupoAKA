@@ -1,5 +1,5 @@
 package com.fastbite.persistence;
-import com.fastbite.fastbite.model.Producto;
+import com.fastbite.model.Producto;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.io.FileReader;
