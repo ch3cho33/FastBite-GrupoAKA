@@ -48,4 +48,6 @@ public class ProductoController {
     public void guardarProducto() {
         try {
             String nombre = txtNombre.getText();
+            }
+    }
 }
