@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.fastbite.fastbite.controller.ProductoController">
+    <left>
+        <VBox spacing="10" prefWidth="300">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            <Label text="Gestión de Productos"
+                   style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+            <TextField fx:id="txtNombre"
+                       promptText="Nombre del producto"/>
+            <TextArea fx:id="txtDescripcion"
+                      promptText="Descripción"
+                      prefHeight="100"/>
+            <TextField fx:id="txtPrecio"
+                       promptText="Precio"/>
+            <ComboBox fx:id="cbCategoria"
+                      promptText="Seleccione categoría"/>
+            <Button text="Guardar Producto"
+                    onAction="#guardarProducto"/>
+            <Button text="Eliminar Producto"
+                    onAction="#eliminarProducto"/>
+            <Button text="Desactivar Producto"
+                    onAction="#desactivarProducto"/>
+            <Button text="Activar Producto"
+                    onAction="#activarProducto"/>
+        </VBox>
+    </left>
+    <center>
+        <TableView fx:id="tablaProductos">
+            <columns>
+                <TableColumn fx:id="colNombre"
+                             text="Nombre"
+                             prefWidth="180"/>
+                <TableColumn fx:id="colPrecio"
+                             text="Precio"
+                             prefWidth="100"/>
+                <TableColumn fx:id="colCategoria"
+                             text="Categoría"
+                             prefWidth="150"/>
+                <TableColumn fx:id="colEstado"
+                             text="Activo"
+                             prefWidth="100"/>
+            </columns>
+        </TableView>
+
+    </center>
+
+</BorderPane>
