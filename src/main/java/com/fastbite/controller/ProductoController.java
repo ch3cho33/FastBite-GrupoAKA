@@ -86,7 +86,7 @@ public class ProductoController {
     public void desactivarProducto() {
         Producto productoSeleccionado = tablaProductos.getSelectionModel().getSelectedItem();
         if (productoSeleccionado != null) {
-            productoSeleccionado.desactivar();
+            productoSeleccionado.setActivo(false);
             tablaProductos.refresh();
         } else {
             mostrarError("Seleccione un producto");
@@ -97,7 +97,7 @@ public class ProductoController {
     public void activarProducto() {
         Producto productoSeleccionado = tablaProductos.getSelectionModel().getSelectedItem();
         if (productoSeleccionado != null) {
-            productoSeleccionado.activar();
+            productoSeleccionado.setActivo(true);
             tablaProductos.refresh();
         } else {
             mostrarError("Seleccione un producto");
