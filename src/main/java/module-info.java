@@ -8,6 +8,7 @@ module com.fastbite {
     opens com.fastbite.model to javafx.base, com.google.gson;
     opens com.fastbite.controller to javafx.fxml;
     opens com.fastbite.persistence to com.google.gson;
+    opens com.fastbite.util to javafx.fxml;
 
     exports com.fastbite;
     exports com.fastbite.model;

@@ -1,8 +1,8 @@
 package com.fastbite;
 
-
 import com.fastbite.controller.CocinaController;
 import com.fastbite.controller.InventarioController;
+import com.fastbite.controller.PedidoController;
 import com.fastbite.util.DatosPrueba;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -12,39 +12,47 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 
 public class MainApp extends Application {
 
-    private static final String TITULO = "FastBite — Sistema de Gestión";
-    private static final double ANCHO  = 1200;
-    private static final double ALTO   = 750;
-
     @Override
     public void start(Stage primaryStage) throws Exception {
-        // Cargar datos de muestra primero (opcional)
+
         DatosPrueba.cargar();
 
         TabPane tabPane = new TabPane();
         tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
 
-        // Módulo Cocina
-        Tab tabCocina = new Tab("🍳 Cocina");
+        // --- Tab Cocina (tu parte) ---
+        Tab tabCocina = new Tab("Cocina");
         tabCocina.setContent(cargarVista("/com/fastbite/views/cocina.fxml"));
 
-        // Módulo Inventario
-        Tab tabInventario = new Tab("📦 Inventario");
+        // --- Tab Inventario (tu parte) ---
+        Tab tabInventario = new Tab("Inventario");
         tabInventario.setContent(cargarVista("/com/fastbite/views/inventario.fxml"));
 
-        // Módulo Fidelización (Cliente)
-        Tab tabFidelizacion = new Tab("Fidelización");
-        tabFidelizacion.setContent(cargarVista("/com/fastbite/views/Cliente.fxml"));
+        // --- Tab Clientes (compañeros) ---
+        Tab tabClientes = new Tab("Clientes");
+        try {
+            tabClientes.setContent(cargarVista("/com/fastbite/views/Cliente.fxml"));
+        } catch (Exception e) {
+            System.err.println("No se pudo cargar Cliente.fxml: " + e.getMessage());
+        }
 
-        // Agregar todas las pestañas
-        tabPane.getTabs().addAll(tabCocina, tabInventario, tabFidelizacion);
+        // --- Tab Productos (compañeros) ---
+        Tab tabProductos = new Tab("Productos");
+        try {
+            tabProductos.setContent(cargarVista("/com/fastbite/views/Productos.fxml"));
+        } catch (Exception e) {
+            System.err.println("No se pudo cargar Productos.fxml: " + e.getMessage());
+        }
 
-        Scene scene = new Scene(tabPane, ANCHO, ALTO);
-        primaryStage.setTitle(TITULO);
+        tabPane.getTabs().addAll(tabCocina, tabInventario, tabClientes, tabProductos);
+
+        Scene scene = new Scene(tabPane, 1200, 750);
+        primaryStage.setTitle("FastBite - Sistema de Gestion");
         primaryStage.setScene(scene);
         primaryStage.setMinWidth(900);
         primaryStage.setMinHeight(600);
@@ -52,6 +60,7 @@ public class MainApp extends Application {
         primaryStage.setOnCloseRequest(e -> {
             CocinaController.getInstance().guardarDatos();
             InventarioController.getInstance().guardarDatos();
+            PedidoController.getInstance().guardarDatos();
             Platform.exit();
         });
 
