@@ -1,5 +1,6 @@
 package com.fastbite.persistence;
 
+import com.fastbite.exception.PersistenciaException;
 import com.fastbite.model.*;
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
@@ -12,18 +13,18 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Gestiona la persistencia en archivos JSON para FastBite.
- * Archivos: pedidos.json, inventario.json, movimientos.json, alertas.json
- */
+
+ // Gestiona la persistencia en archivos JSON para FastBite.
+
 public class PersistenciaManager {
 
     private static final String DIRECTORIO_DATOS = "datos/";
-    private static final String ARCHIVO_PEDIDOS       = DIRECTORIO_DATOS + "pedidos.json";
-    private static final String ARCHIVO_INVENTARIO    = DIRECTORIO_DATOS + "inventario.json";
-    private static final String ARCHIVO_MOVIMIENTOS   = DIRECTORIO_DATOS + "movimientos.json";
-    private static final String ARCHIVO_ALERTAS       = DIRECTORIO_DATOS + "alertas.json";
-    private static final String ARCHIVO_PRODUCTOS     = DIRECTORIO_DATOS + "productos.json";
+    private static final String ARCHIVO_PEDIDOS = DIRECTORIO_DATOS + "pedidos.json";
+    private static final String ARCHIVO_INVENTARIO  = DIRECTORIO_DATOS + "inventario.json";
+    private static final String ARCHIVO_MOVIMIENTOS = DIRECTORIO_DATOS + "movimientos.json";
+    private static final String ARCHIVO_ALERTAS = DIRECTORIO_DATOS + "alertas.json";
+    private static final String ARCHIVO_PRODUCTOS = DIRECTORIO_DATOS + "productos.json";
+    private static final String ARCHIVO_CLIENTES = DIRECTORIO_DATOS + "clientes.json";
 
     private static final Gson GSON = new GsonBuilder()
             .setPrettyPrinting()
@@ -47,11 +48,12 @@ public class PersistenciaManager {
         try {
             Files.createDirectories(Paths.get(DIRECTORIO_DATOS));
         } catch (IOException e) {
-            System.err.println("Error creando directorio de datos: " + e.getMessage());
+            throw new PersistenciaException(DIRECTORIO_DATOS,
+                    "No se pudo crear el directorio de datos", e);
         }
     }
 
-    // ======================== PEDIDOS ========================
+    // Pedidos
 
     public void guardarPedidos(List<Pedido> pedidos) {
         guardarJson(ARCHIVO_PEDIDOS, pedidos);
@@ -59,11 +61,11 @@ public class PersistenciaManager {
 
     public List<Pedido> cargarPedidos() {
         Type tipo = new TypeToken<List<Pedido>>() {}.getType();
-        List<Pedido> pedidos = cargarJson(ARCHIVO_PEDIDOS, tipo);
-        return pedidos != null ? pedidos : new ArrayList<>();
+        List<Pedido> lista = cargarJson(ARCHIVO_PEDIDOS, tipo);
+        return lista != null ? lista : new ArrayList<>();
     }
 
-    // ======================== INVENTARIO ========================
+    // Inventario
 
     public void guardarIngredientes(List<Ingrediente> ingredientes) {
         guardarJson(ARCHIVO_INVENTARIO, ingredientes);
@@ -75,7 +77,7 @@ public class PersistenciaManager {
         return lista != null ? lista : new ArrayList<>();
     }
 
-    // ======================== MOVIMIENTOS ========================
+    // Movimientos
 
     public void guardarMovimientos(List<MovimientoInventario> movimientos) {
         guardarJson(ARCHIVO_MOVIMIENTOS, movimientos);
@@ -87,7 +89,7 @@ public class PersistenciaManager {
         return lista != null ? lista : new ArrayList<>();
     }
 
-    // ======================== ALERTAS ========================
+    // Alertas
 
     public void guardarAlertas(List<AlertaStock> alertas) {
         guardarJson(ARCHIVO_ALERTAS, alertas);
@@ -99,7 +101,7 @@ public class PersistenciaManager {
         return lista != null ? lista : new ArrayList<>();
     }
 
-    // ======================== PRODUCTOS ========================
+    // Productos
 
     public void guardarProductos(List<Producto> productos) {
         guardarJson(ARCHIVO_PRODUCTOS, productos);
@@ -111,28 +113,45 @@ public class PersistenciaManager {
         return lista != null ? lista : new ArrayList<>();
     }
 
-    // ======================== UTILIDADES ========================
+    // Clientes
+
+    public void guardarClientes(List<Object> clientes) {
+        guardarJson(ARCHIVO_CLIENTES, clientes);
+    }
+
+    public <T> List<T> cargarClientes(Class<T> claseCliente) {
+        Type tipo = TypeToken.getParameterized(List.class, claseCliente).getType();
+        List<T> lista = cargarJson(ARCHIVO_CLIENTES, tipo);
+        return lista != null ? lista : new ArrayList<>();
+    }
+
+    // utlidades
 
     private void guardarJson(String archivo, Object objeto) {
         try (Writer writer = new FileWriter(archivo)) {
             GSON.toJson(objeto, writer);
         } catch (IOException e) {
-            System.err.println("Error guardando " + archivo + ": " + e.getMessage());
+            throw new PersistenciaException(archivo,
+                    "Error al guardar el archivo", e);
         }
     }
 
+    @SuppressWarnings("unchecked")
     private <T> T cargarJson(String archivo, Type tipo) {
         File file = new File(archivo);
         if (!file.exists()) return null;
         try (Reader reader = new FileReader(file)) {
             return GSON.fromJson(reader, tipo);
-        } catch (IOException | JsonSyntaxException e) {
-            System.err.println("Error cargando " + archivo + ": " + e.getMessage());
-            return null;
+        } catch (IOException e) {
+            throw new PersistenciaException(archivo,
+                    "Error al leer el archivo", e);
+        } catch (JsonSyntaxException e) {
+            throw new PersistenciaException(archivo,
+                    "El archivo JSON está corrupto o tiene formato inválido", e);
         }
     }
 
-    // ======================== LocalDateTime Adapter ========================
+    //Date Time
 
     private static class LocalDateTimeAdapter
             implements JsonSerializer<LocalDateTime>, JsonDeserializer<LocalDateTime> {

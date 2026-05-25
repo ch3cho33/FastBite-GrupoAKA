@@ -2,10 +2,10 @@ package com.fastbite.model;
 
 import java.util.UUID;
 
-/**
- * Entity: Representa cada producto dentro de un pedido.
- * GRASP Information Expert: calcula su propio subtotal.
- */
+
+ // Entity: Representa cada producto dentro de un pedido.
+ // GRASP Information Expert: calcula su propio subtotal.
+
 public class ItemPedido {
 
     private String id;
@@ -14,7 +14,7 @@ public class ItemPedido {
     private int cantidad;
     private double precioUnitario;
     private double subtotal;
-    private EstadoPedido estado; // estado individual del ítem en cocina
+    private EstadoPedido estado;
 
     public ItemPedido() {
         this.id = UUID.randomUUID().toString();
@@ -30,10 +30,9 @@ public class ItemPedido {
         calcularSubtotal();
     }
 
-    /**
-     * GRASP Information Expert: el ItemPedido conoce cantidad y precio,
-     * por eso es responsable de calcular su subtotal.
-     */
+
+     // GRASP Information Expert: el ItemPedido conoce cantidad y precio y por eso es responsable de calcular su subtotal.
+
     public void calcularSubtotal() {
         this.subtotal = this.cantidad * this.precioUnitario;
     }

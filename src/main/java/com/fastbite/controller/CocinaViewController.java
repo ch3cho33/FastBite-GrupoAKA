@@ -14,50 +14,48 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
-/**
- * Boundary: Controlador JavaFX de la vista de Cocina (cocina.fxml).
- * Solo interactúa con CocinaController, nunca con entidades directamente.
- * GRASP Low Coupling: la vista no modifica Pedido, pide acción al controller.
- */
+  // Controlador JavaFX de la vista de Cocina (fxml)
+  // Solo interactúa con CocinaController, nunca con entidades directamente.
+  // GRASP Low Coupling: la vista no modifica Pedido, pide acción al controller.
+
 public class CocinaViewController implements Initializable {
 
-    // ── Controller de negocio ──────────────────────────────────────
+    // Controller del negocio
     private final CocinaController cocinaController = CocinaController.getInstance();
 
-    // ── FXML – Panel izquierdo ────────────────────────────────────
-    @FXML private ListView<Pedido>    listaPedidos;
-    @FXML private ComboBox<String>    cmbFiltroEstado;
-    @FXML private Button              btnIniciarPreparacion;
-    @FXML private Button              btnMarcarListo;
+    // FXMl Paneles
+    @FXML private ListView<Pedido> listaPedidos;
+    @FXML private ComboBox<String> cmbFiltroEstado;
+    @FXML private Button btnIniciarPreparacion;
+    @FXML private Button btnMarcarListo;
 
-    // ── FXML – Panel derecho ──────────────────────────────────────
-    @FXML private GridPane            gridDetalle;
-    @FXML private Label               lblNumeroPedido;
-    @FXML private Label               lblTipoPedido;
-    @FXML private Label               lblEstadoPedido;
-    @FXML private Label               lblHoraPedido;
-    @FXML private Label               lblTotalPedido;
-    @FXML private Label               lblObservaciones;
+    @FXML private GridPane gridDetalle;
+    @FXML private Label lblNumeroPedido;
+    @FXML private Label lblTipoPedido;
+    @FXML private Label lblEstadoPedido;
+    @FXML private Label lblHoraPedido;
+    @FXML private Label lblTotalPedido;
+    @FXML private Label lblObservaciones;
 
-    @FXML private TableView<ItemPedido>    tablaItems;
+    @FXML private TableView<ItemPedido> tablaItems;
     @FXML private TableColumn<ItemPedido, String> colProducto;
     @FXML private TableColumn<ItemPedido, Integer> colCantidad;
-    @FXML private TableColumn<ItemPedido, Double>  colSubtotal;
+    @FXML private TableColumn<ItemPedido, Double> colSubtotal;
     @FXML private TableColumn<ItemPedido, EstadoPedido> colEstadoItem;
-    @FXML private Button              btnMarcarItemListo;
+    @FXML private Button btnMarcarItemListo;
 
-    // ── FXML – Status bar ─────────────────────────────────────────
-    @FXML private Label               lblPendientes;
-    @FXML private Label               lblEnPreparacion;
-    @FXML private Label               lblMensaje;
-    @FXML private Label               lblFecha;
+    // Barra de estado
+    @FXML private Label lblPendientes;
+    @FXML private Label lblEnPreparacion;
+    @FXML private Label lblMensaje;
+    @FXML private Label lblFecha;
 
-    // ── Estado interno ────────────────────────────────────────────
+    // Estado Interno
     private Pedido pedidoSeleccionado;
     private final ObservableList<Pedido> pedidosObservable = FXCollections.observableArrayList();
     private final ObservableList<ItemPedido> itemsObservable = FXCollections.observableArrayList();
 
-    // ─────────────────────────────────────────────────────────────
+    // Inicializar
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         configurarColumnas();
@@ -67,10 +65,7 @@ public class CocinaViewController implements Initializable {
         actualizarFecha();
     }
 
-    // ══════════════════════════════════════════════════════════════
-    //  CONFIGURACIÓN INICIAL
-    // ══════════════════════════════════════════════════════════════
-
+    // Configuración Inicial
     private void configurarColumnas() {
         colProducto.setCellValueFactory(new PropertyValueFactory<>("nombreProducto"));
         colCantidad.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
@@ -136,9 +131,7 @@ public class CocinaViewController implements Initializable {
                 (obs, ant, nuevo) -> btnMarcarItemListo.setDisable(nuevo == null));
     }
 
-    // ══════════════════════════════════════════════════════════════
-    //  HANDLERS FXML
-    // ══════════════════════════════════════════════════════════════
+    // Handlers FXMl
 
     @FXML
     private void handleActualizar() {
@@ -195,9 +188,7 @@ public class CocinaViewController implements Initializable {
         }
     }
 
-    // ══════════════════════════════════════════════════════════════
-    //  ACTUALIZACIÓN DE VISTA
-    // ══════════════════════════════════════════════════════════════
+    // Actualización Vista
 
     private void actualizarVista() {
         String filtro = cmbFiltroEstado.getValue();

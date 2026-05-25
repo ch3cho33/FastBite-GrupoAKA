@@ -3,7 +3,7 @@
     "id": "f5b96f0b-3b2c-40cb-8e9a-0b97c4b7eb98",
     "numeroPedido": "P-5628",
     "tipoPedido": "Mesa",
-    "estado": "PENDIENTE",
+    "estado": "EN_PREPARACION",
     "items": [
       {
         "id": "563274f9-d1e4-43c5-aca0-096cd3a4a76a",
@@ -28,7 +28,7 @@
     "iva": 8360.0,
     "total": 52360.0,
     "fechaCreacion": "2026-05-17T15:50:25.628292",
-    "fechaActualizacion": "2026-05-17T15:50:25.63051",
+    "fechaActualizacion": "2026-05-24T08:45:24.47766",
     "observaciones": "Sin cebolla en la hamburguesa."
   },
   {
@@ -75,5 +75,78 @@
     "fechaCreacion": "2026-05-17T15:50:25.632389",
     "fechaActualizacion": "2026-05-17T16:09:07.586695",
     "observaciones": "Entregar antes de las 7pm."
+  },
+  {
+    "id": "26f1176c-ce11-46e4-a937-a89aa1907ec0",
+    "numeroPedido": "P-5466",
+    "tipoPedido": "Mesa",
+    "estado": "PENDIENTE",
+    "items": [
+      {
+        "id": "64311d52-fb57-4f4e-ac55-f35637e1c41c",
+        "productoId": "e4fd20dc-2b5c-4241-8611-5c032da6a33b",
+        "nombreProducto": "Coca-Cola Zero",
+        "cantidad": 1,
+        "precioUnitario": 4000.0,
+        "subtotal": 4000.0,
+        "estado": "PENDIENTE"
+      },
+      {
+        "id": "3a5b9ae3-313c-42bc-9ba0-683d817f1137",
+        "productoId": "7af2d94c-ca20-42cd-b144-d93a945c66c4",
+        "nombreProducto": "Hamburguesa Criolla",
+        "cantidad": 1,
+        "precioUnitario": 30000.0,
+        "subtotal": 30000.0,
+        "estado": "PENDIENTE"
+      }
+    ],
+    "subtotal": 34000.0,
+    "iva": 6460.0,
+    "total": 40460.0,
+    "fechaCreacion": "2026-05-24T16:35:15.466541",
+    "fechaActualizacion": "2026-05-24T16:37:00.641575",
+    "observaciones": "Sin lechuga"
+  },
+  {
+    "id": "85e604a2-4b33-4ffe-9ee6-cf771d515540",
+    "numeroPedido": "P-2524",
+    "tipoPedido": "Domicilio",
+    "estado": "LISTO",
+    "items": [
+      {
+        "id": "462f22dd-b9d9-4d0e-8e9d-e47d4ea9c44c",
+        "productoId": "7af2d94c-ca20-42cd-b144-d93a945c66c4",
+        "nombreProducto": "Hamburguesa Criolla",
+        "cantidad": 1,
+        "precioUnitario": 30000.0,
+        "subtotal": 30000.0,
+        "estado": "LISTO"
+      },
+      {
+        "id": "3774d9ba-80a0-4a1c-ba27-e36892595fff",
+        "productoId": "e4fd20dc-2b5c-4241-8611-5c032da6a33b",
+        "nombreProducto": "Coca-Cola Zero",
+        "cantidad": 1,
+        "precioUnitario": 4000.0,
+        "subtotal": 4000.0,
+        "estado": "LISTO"
+      },
+      {
+        "id": "d8127381-8adf-4cbb-8495-d48eb54c231c",
+        "productoId": "3957463f-16d7-43f2-9ea8-f2780288a189",
+        "nombreProducto": "Papa Francesa",
+        "cantidad": 1,
+        "precioUnitario": 7000.0,
+        "subtotal": 7000.0,
+        "estado": "LISTO"
+      }
+    ],
+    "subtotal": 41000.0,
+    "iva": 7790.0,
+    "total": 48790.0,
+    "fechaCreacion": "2026-05-24T16:40:02.524555",
+    "fechaActualizacion": "2026-05-24T16:43:25.525875",
+    "observaciones": "Sin lechuga"
   }
 ]

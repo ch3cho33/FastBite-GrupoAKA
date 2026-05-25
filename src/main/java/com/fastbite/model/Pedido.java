@@ -6,11 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-/**
- * Entity: Representa la orden completa realizada por un cliente.
- * GRASP Information Expert: calcula subtotal, IVA y total del pedido.
- * GRASP Creator: crea instancias de ItemPedido.
- */
+
+ // Entity: Representa la orden completa realizada por un cliente.
+ // GRASP Information Expert: calcula subtotal, IVA y total del pedido.
+ // GRASP Creator: crea instancias de ItemPedido.
+
 public class Pedido {
 
     private static final double IVA = 0.19;
@@ -42,9 +42,9 @@ public class Pedido {
         this.tipoPedido = tipoPedido;
     }
 
-    /**
-     * GRASP Creator: Pedido agrega ItemPedido porque los contiene.
-     */
+
+     // GRASP Creator: Pedido agrega ItemPedido porque los contiene.
+
     public void agregarItem(ItemPedido item) {
         this.items.add(item);
         calcularTotal();
@@ -57,10 +57,9 @@ public class Pedido {
         this.fechaActualizacion = LocalDateTime.now();
     }
 
-    /**
-     * GRASP Information Expert: Pedido conoce todos sus ítems y
-     * es responsable de calcular el total completo.
-     */
+
+     // GRASP Information Expert: Pedido conoce todos sus ítems y es responsable de calcular el total completo.
+
     public void calcularTotal() {
         this.subtotal = items.stream()
                 .mapToDouble(ItemPedido::getSubtotal)
@@ -69,18 +68,15 @@ public class Pedido {
         this.total = this.subtotal + this.iva;
     }
 
-    /**
-     * Cambia el estado del pedido con validación de transición.
-     */
+    // Cambia el estado del pedido con validación de transición.
+
     public void cambiarEstado(EstadoPedido nuevoEstado) {
         this.estado = nuevoEstado;
         this.fechaActualizacion = LocalDateTime.now();
     }
 
-    /**
-     * Verifica si todos los ítems del pedido están listos.
-     * Usado por CocinaController para marcar el pedido como LISTO.
-     */
+    // Verifica si todos los ítems del pedido están listos.
+
     public boolean todosItemsListos() {
         return !items.isEmpty() &&
                 items.stream().allMatch(i -> i.getEstado() == EstadoPedido.LISTO);

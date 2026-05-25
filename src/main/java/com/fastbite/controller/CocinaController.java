@@ -7,11 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * Control: Coordina el flujo de preparación de pedidos en cocina.
- * GRASP Controller: caso de uso "Preparar Pedido".
- * Integración IMPORTANTE: descuenta inventario al marcar pedido como listo.
- */
+// Control: Coordina el flujo de preparación de pedidos en cocina.
+
 public class CocinaController {
 
     private static CocinaController instancia;
@@ -33,30 +30,22 @@ public class CocinaController {
         return instancia;
     }
 
-    // ======================== GESTIÓN DE PEDIDOS ========================
+    // Gestión de Pedidos - Vista Principal
 
-    /**
-     * Obtiene todos los pedidos en estado PENDIENTE.
-     * Vista principal de la cocina.
-     */
     public List<Pedido> obtenerPedidosPendientes() {
         return pedidos.stream()
                 .filter(p -> p.getEstado() == EstadoPedido.PENDIENTE)
                 .toList();
     }
 
-    /**
-     * Obtiene los pedidos en estado EN_PREPARACION.
-     */
+    // Obtener pedidos en prepración
     public List<Pedido> obtenerPedidosEnPreparacion() {
         return pedidos.stream()
                 .filter(p -> p.getEstado() == EstadoPedido.EN_PREPARACION)
                 .toList();
     }
 
-    /**
-     * Obtiene todos los pedidos activos (pendientes + en preparación).
-     */
+    // Obtiene todos los pedidos activos
     public List<Pedido> obtenerPedidosActivos() {
         return pedidos.stream()
                 .filter(p -> p.getEstado() == EstadoPedido.PENDIENTE
@@ -64,9 +53,7 @@ public class CocinaController {
                 .toList();
     }
 
-    /**
-     * Cambia el estado de un pedido a EN_PREPARACION.
-     */
+    // Cambiar estado de preparación
     public void iniciarPreparacion(String pedidoId) {
         Pedido pedido = obtenerPedidoPorId(pedidoId);
         if (pedido.getEstado() != EstadoPedido.PENDIENTE) {
@@ -77,9 +64,7 @@ public class CocinaController {
         guardarDatos();
     }
 
-    /**
-     * Marca un ítem específico de un pedido como LISTO.
-     */
+    // Cambiar estado a listo
     public void marcarItemListo(String pedidoId, String itemId) {
         Pedido pedido = obtenerPedidoPorId(pedidoId);
         ItemPedido item = pedido.getItems().stream()
@@ -90,10 +75,7 @@ public class CocinaController {
         guardarDatos();
     }
 
-    /**
-     * Marca el pedido completo como LISTO.
-     * *** INTEGRACIÓN IMPORTANTE: descuenta inventario automáticamente. ***
-     */
+    // Marcar pedido completo como Listo
     public void marcarPedidoListo(String pedidoId) {
         Pedido pedido = obtenerPedidoPorId(pedidoId);
 
@@ -110,14 +92,11 @@ public class CocinaController {
         pedido.cambiarEstado(EstadoPedido.LISTO);
         guardarDatos();
 
-        // Notificación (en la implementación real podría disparar un evento JavaFX)
+        // Notificación
         System.out.println("[COCINA] Pedido " + pedido.getNumeroPedido() + " marcado como LISTO.");
     }
 
-    /**
-     * Cambia el estado de un pedido a cualquier estado válido.
-     * Método general para cambios de estado desde la vista.
-     */
+    //Cambio estado de vista
     public void cambiarEstadoPedido(String pedidoId, EstadoPedido nuevoEstado) {
         Pedido pedido = obtenerPedidoPorId(pedidoId);
         EstadoPedido estadoActual = pedido.getEstado();
@@ -138,9 +117,7 @@ public class CocinaController {
         guardarDatos();
     }
 
-    /**
-     * Agrega un nuevo pedido al sistema (llamado desde PedidoController de otros módulos).
-     */
+    // Agregar nuevo pedido al sistema
     public void recibirPedido(Pedido pedido) {
         pedidos.add(pedido);
         guardarDatos();
@@ -155,8 +132,8 @@ public class CocinaController {
         return new ArrayList<>(pedidos);
     }
 
-    // ======================== VALIDACIONES ========================
 
+    // Validaciones
     private boolean esTransicionValida(EstadoPedido actual, EstadoPedido nuevo) {
         return switch (actual) {
             case PENDIENTE      -> nuevo == EstadoPedido.EN_PREPARACION || nuevo == EstadoPedido.CANCELADO;
@@ -173,8 +150,7 @@ public class CocinaController {
                 .orElseThrow(() -> new IllegalArgumentException("Pedido no encontrado: " + id));
     }
 
-    // ======================== PERSISTENCIA ========================
-
+    // Persistencia
     private void cargarDatos() {
         pedidos = new ArrayList<>(persistencia.cargarPedidos());
     }

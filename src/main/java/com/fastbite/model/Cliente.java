@@ -12,12 +12,12 @@ public class Cliente {
 
 
     public Cliente(int id, String nombre, String apellido, String email, String telefono) {
-        this.id       = id;
-        this.nombre   = nombre;
+        this.id = id;
+        this.nombre = nombre;
         this.apellido = apellido;
-        this.email    = email;
+        this.email = email;
         this.telefono = telefono;
-        this.puntos   = 0; // todo cliente empieza con 0 puntos
+        this.puntos = 0;
     }
 
 

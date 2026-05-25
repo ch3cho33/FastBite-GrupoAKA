@@ -4,10 +4,8 @@ import com.fastbite.controller.CocinaController;
 import com.fastbite.controller.InventarioController;
 import com.fastbite.model.*;
 
-/**
- * Utilidad para cargar datos de prueba en desarrollo.
- * Llama a DatosPrueba.cargar() desde MainApp si los archivos están vacíos.
- */
+// Cargar datos de prueba
+
 public class DatosPrueba {
 
     public static void cargar() {

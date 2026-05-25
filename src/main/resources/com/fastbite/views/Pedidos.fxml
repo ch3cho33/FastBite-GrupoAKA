@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.fastbite.controller.PedidoViewController"
+            stylesheets="@fastbite.css"
+            style="-fx-background-color: #0f172a;">
+
+
+    <top>
+        <HBox styleClass="header-bar" alignment="CENTER_LEFT" spacing="16">
+            <padding><Insets top="0" right="24" bottom="0" left="24"/></padding>
+            <VBox spacing="2" alignment="CENTER_LEFT">
+                <Label text="Toma de Pedidos" styleClass="header-title"/>
+                <Label text="FastBite POS" styleClass="header-subtitle"/>
+            </VBox>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label fx:id="lblHora" styleClass="header-info"/>
+            <Button text="Nuevo Pedido" styleClass="btn-primary" onAction="#handleNuevoPedido"/>
+        </HBox>
+    </top>
+
+    <center>
+        <SplitPane dividerPositions="0.58" style="-fx-background-color: #0f172a;">
+
+
+            <VBox spacing="0" style="-fx-background-color: #0f172a;">
+                <padding><Insets top="16" right="8" bottom="16" left="16"/></padding>
+
+
+                <HBox spacing="8" alignment="CENTER_LEFT">
+                    <padding><Insets bottom="12"/></padding>
+                    <Label text="Categoría:" styleClass="field-label"/>
+                    <ComboBox fx:id="cmbCategoria" promptText="Todas"
+                              onAction="#handleFiltrarCategoria"
+                              prefWidth="160"
+                              style="-fx-background-color:#1e293b; -fx-text-fill:#e2e8f0; -fx-border-color:#334155; -fx-border-radius:8; -fx-background-radius:8;"/>
+                    <TextField fx:id="txtBuscarProducto" promptText="Buscar producto..."
+                               HBox.hgrow="ALWAYS" onKeyReleased="#handleBuscarProducto"
+                               style="-fx-background-color:#1e293b; -fx-text-fill:#e2e8f0; -fx-border-color:#334155; -fx-border-radius:8; -fx-background-radius:8; -fx-padding: 8 12 8 12; -fx-prompt-text-fill:#475569;"/>
+                </HBox>
+
+
+                <TableView fx:id="tablaMenu" VBox.vgrow="ALWAYS"
+                           onMouseClicked="#handleSeleccionarProducto"
+                           style="-fx-background-color:#1e293b; -fx-border-color:#334155; -fx-border-radius:8;">
+                    <columns>
+                        <TableColumn fx:id="colMenuNombre"    text="Producto"   prefWidth="220"/>
+                        <TableColumn fx:id="colMenuCategoria" text="Categoría"  prefWidth="130"/>
+                        <TableColumn fx:id="colMenuPrecio"    text="Precio"     prefWidth="110"/>
+                        <TableColumn fx:id="colMenuEstado"    text="Disponible" prefWidth="100"/>
+                    </columns>
+                    <placeholder>
+                        <Label text="No hay productos en el menú"
+                               style="-fx-text-fill: #475569;"/>
+                    </placeholder>
+                </TableView>
+
+
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <padding><Insets top="12"/></padding>
+                    <Label text="Cant.:" styleClass="field-label"/>
+                    <TextField fx:id="txtCantidad" text="1" prefWidth="60"
+                               style="-fx-background-color:#1e293b; -fx-text-fill:#e2e8f0; -fx-border-color:#334155; -fx-border-radius:8; -fx-background-radius:8; -fx-padding:8 12 8 12;"/>
+                    <Button text="+ Agregar al pedido" styleClass="btn-primary"
+                            onAction="#handleAgregarItem" HBox.hgrow="ALWAYS"
+                            maxWidth="Infinity"/>
+                    <Label fx:id="lblMsgMenu" styleClass="status-msg"/>
+                </HBox>
+            </VBox>
+
+
+            <VBox spacing="12" style="-fx-background-color: #0f172a;">
+                <padding><Insets top="16" right="16" bottom="16" left="8"/></padding>
+
+
+                <HBox spacing="12" alignment="CENTER_LEFT">
+                    <VBox spacing="4" HBox.hgrow="ALWAYS">
+                        <Label text="Pedido en curso" styleClass="panel-title"/>
+                        <HBox spacing="8" alignment="CENTER_LEFT">
+                            <Label text="Tipo:" styleClass="field-label"/>
+                            <ComboBox fx:id="cmbTipoPedido" prefWidth="150"
+                                      style="-fx-background-color:#1e293b; -fx-text-fill:#e2e8f0; -fx-border-color:#334155; -fx-border-radius:8; -fx-background-radius:8;"/>
+                            <Label text="Obs.:" styleClass="field-label"/>
+                            <TextField fx:id="txtObservaciones" promptText="Observaciones..."
+                                       HBox.hgrow="ALWAYS"
+                                       style="-fx-background-color:#1e293b; -fx-text-fill:#e2e8f0; -fx-border-color:#334155; -fx-border-radius:8; -fx-background-radius:8; -fx-padding:8 12 8 12; -fx-prompt-text-fill:#475569;"/>
+                        </HBox>
+                    </VBox>
+                    <Label fx:id="lblNumeroPedido"
+                           style="-fx-text-fill:#f97316; -fx-font-weight:bold; -fx-font-size:13px;"/>
+                </HBox>
+
+
+                <TableView fx:id="tablaCarrito" VBox.vgrow="ALWAYS"
+                           style="-fx-background-color:#1e293b; -fx-border-color:#334155; -fx-border-radius:8;">
+                    <columns>
+                        <TableColumn fx:id="colItemNombre"   text="Producto"  prefWidth="180"/>
+                        <TableColumn fx:id="colItemCantidad" text="Cant."     prefWidth="55"/>
+                        <TableColumn fx:id="colItemPrecio"   text="P. Unit."  prefWidth="90"/>
+                        <TableColumn fx:id="colItemSubtotal" text="Subtotal"  prefWidth="100"/>
+                    </columns>
+                    <placeholder>
+                        <Label text="Agrega productos al pedido"
+                               style="-fx-text-fill:#475569;"/>
+                    </placeholder>
+                </TableView>
+
+                <HBox spacing="8" alignment="CENTER_RIGHT">
+                    <Button text="Quitar seleccionado" styleClass="btn-ghost"
+                            onAction="#handleQuitarItem"/>
+                    <Button text="Limpiar pedido" styleClass="btn-ghost"
+                            onAction="#handleLimpiarPedido"/>
+                </HBox>
+
+
+                <VBox styleClass="total-box" spacing="6">
+                    <padding><Insets top="12" right="16" bottom="12" left="16"/></padding>
+                    <HBox>
+                        <Label text="Subtotal:" styleClass="subtotal-label"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Label fx:id="lblSubtotal" styleClass="subtotal-label"/>
+                    </HBox>
+                    <HBox>
+                        <Label text="IVA (19%):" styleClass="subtotal-label"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Label fx:id="lblIva" styleClass="subtotal-label"/>
+                    </HBox>
+                    <Separator/>
+                    <HBox alignment="CENTER_LEFT">
+                        <Label text="TOTAL" styleClass="field-label"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Label fx:id="lblTotal" styleClass="total-label"/>
+                    </HBox>
+                </VBox>
+
+
+                <VBox styleClass="pago-box" spacing="10">
+                    <padding><Insets top="12" right="16" bottom="12" left="16"/></padding>
+                    <Label text="Pago" styleClass="panel-title"/>
+
+                    <HBox spacing="12" alignment="CENTER_LEFT">
+                        <VBox spacing="4">
+                            <Label text="Método" styleClass="field-label"/>
+                            <ComboBox fx:id="cmbMetodoPago" prefWidth="160"
+                                      style="-fx-background-color:#0f172a; -fx-text-fill:#e2e8f0; -fx-border-color:#334155; -fx-border-radius:8; -fx-background-radius:8;"/>
+                        </VBox>
+                        <VBox spacing="4" HBox.hgrow="ALWAYS">
+                            <Label text="Monto recibido ($)" styleClass="field-label"/>
+                            <TextField fx:id="txtMontoPagado" promptText="0"
+                                       style="-fx-background-color:#0f172a; -fx-text-fill:#e2e8f0; -fx-border-color:#334155; -fx-border-radius:8; -fx-background-radius:8; -fx-padding:8 12 8 12; -fx-prompt-text-fill:#475569;"/>
+                        </VBox>
+                        <VBox spacing="4" alignment="BOTTOM_LEFT">
+                            <Label text=" " styleClass="field-label"/>
+                            <Button text="Procesar Pago" styleClass="btn-success"
+                                    onAction="#handleProcesarPago"
+                                    style="-fx-min-width:130;"/>
+                        </VBox>
+                    </HBox>
+
+                    <HBox alignment="CENTER_LEFT" spacing="16">
+                        <Label text="Cambio:" styleClass="field-label"/>
+                        <Label fx:id="lblCambio" text="0"
+                               styleClass="cambio-label"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Label fx:id="lblMsgPago" styleClass="status-msg" wrapText="true"/>
+                    </HBox>
+                </VBox>
+            </VBox>
+        </SplitPane>
+    </center>
+
+
+    <bottom>
+        <HBox styleClass="status-bar" alignment="CENTER_LEFT" spacing="20">
+            <padding><Insets top="8" right="20" bottom="8" left="20"/></padding>
+            <Label fx:id="lblTotalProductos" text="Productos en menú: 0" styleClass="status-info"/>
+            <Label fx:id="lblItemsCarrito"   text="Items en pedido: 0"   styleClass="status-info"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label fx:id="lblEstadoPedido" styleClass="badge-orange" text="Sin pedido"/>
+        </HBox>
+    </bottom>
+</BorderPane>

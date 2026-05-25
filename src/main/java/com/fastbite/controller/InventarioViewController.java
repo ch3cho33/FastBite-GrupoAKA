@@ -12,17 +12,17 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-/**
- * Boundary: Controlador JavaFX de la vista de Inventario (inventario.fxml).
- * Solo interactúa con InventarioController, nunca con entidades directamente.
- * GRASP Low Coupling: la vista no modifica Ingrediente ni Inventario directamente.
- */
+
+ // Boundary: Controlador JavaFX de la vista de Inventario: inventario.fxml.
+ // Solo interactúa con InventarioController, nunca con entidades directamente.
+ //  GRASP Low Coupling: la vista no modifica Ingrediente ni Inventario directamente.
+
 public class InventarioViewController implements Initializable {
 
-    // ── Controller de negocio ──────────────────────────────────────
+    // Controller del inventario
     private final InventarioController invController = InventarioController.getInstance();
 
-    // ── FXML – Tab Ingredientes ───────────────────────────────────
+    // ─FXML Ingredientes
     @FXML private TableView<Ingrediente>               tablaIngredientes;
     @FXML private TableColumn<Ingrediente, String>     colNombre;
     @FXML private TableColumn<Ingrediente, Double>     colCantidad;
@@ -32,7 +32,7 @@ public class InventarioViewController implements Initializable {
     @FXML private TextField                            txtBusqueda;
     @FXML private Button                               btnEliminar;
 
-    // ── FXML – Formulario ─────────────────────────────────────────
+    // FXMl Formulario
     @FXML private Label                                lblTituloFormulario;
     @FXML private TextField                            txtNombre;
     @FXML private TextField                            txtCantidad;
@@ -43,7 +43,7 @@ public class InventarioViewController implements Initializable {
     @FXML private Button                               btnGuardar;
     @FXML private Label                                lblMensajeForm;
 
-    // ── FXML – Tab Alertas ────────────────────────────────────────
+    // FXML Alertas
     @FXML private TableView<AlertaStock>               tablaAlertas;
     @FXML private TableColumn<AlertaStock, String>     colAlertaNivel;
     @FXML private TableColumn<AlertaStock, String>     colAlertaIngrediente;
@@ -51,7 +51,7 @@ public class InventarioViewController implements Initializable {
     @FXML private TableColumn<AlertaStock, String>     colAlertaFecha;
     @FXML private Label                                lblTotalAlertas;
 
-    // ── FXML – Tab Movimientos ────────────────────────────────────
+    // FXML Moviemientos
     @FXML private TableView<MovimientoInventario>                       tablaMovimientos;
     @FXML private TableColumn<MovimientoInventario, String>             colMovFecha;
     @FXML private TableColumn<MovimientoInventario, MovimientoInventario.TipoMovimiento> colMovTipo;
@@ -61,19 +61,19 @@ public class InventarioViewController implements Initializable {
     @FXML private TableColumn<MovimientoInventario, Double>             colMovStockDespues;
     @FXML private TableColumn<MovimientoInventario, String>             colMovReferencia;
 
-    // ── FXML – Status bar ─────────────────────────────────────────
+    // FXML Barra de estado
     @FXML private Label lblTotalIngredientes;
     @FXML private Label lblBajoStock;
     @FXML private Label lblStatusMsg;
 
-    // ── Estado interno ────────────────────────────────────────────
+    // Estado Interno
     private Ingrediente ingredienteSeleccionado;
     private boolean modoEdicion = false;
     private final ObservableList<Ingrediente>          ingredientesObs  = FXCollections.observableArrayList();
     private final ObservableList<AlertaStock>          alertasObs       = FXCollections.observableArrayList();
     private final ObservableList<MovimientoInventario> movimientosObs   = FXCollections.observableArrayList();
 
-    // ─────────────────────────────────────────────────────────────
+    // Incializar
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         configurarTablaIngredientes();
@@ -84,9 +84,7 @@ public class InventarioViewController implements Initializable {
         actualizarTodo();
     }
 
-    // ══════════════════════════════════════════════════════════════
-    //  CONFIGURACIÓN INICIAL
-    // ══════════════════════════════════════════════════════════════
+    // Configuración Inicial
 
     private void configurarTablaIngredientes() {
         colNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
@@ -94,7 +92,7 @@ public class InventarioViewController implements Initializable {
         colUnidad.setCellValueFactory(new PropertyValueFactory<>("unidad"));
         colStockMin.setCellValueFactory(new PropertyValueFactory<>("stockMinimo"));
 
-        // Columna de estado con color
+        // Color tabla
         colEstadoIng.setCellFactory(col -> new TableCell<>() {
             @Override
             protected void updateItem(String val, boolean empty) {
@@ -208,9 +206,7 @@ public class InventarioViewController implements Initializable {
                 });
     }
 
-    // ══════════════════════════════════════════════════════════════
-    //  HANDLERS FXML
-    // ══════════════════════════════════════════════════════════════
+    // handlers FXML
 
     @FXML
     private void handleActualizar() {
@@ -234,7 +230,7 @@ public class InventarioViewController implements Initializable {
 
     @FXML
     private void handleSeleccionarIngrediente() {
-        // Listener ya lo maneja
+
     }
 
     @FXML
@@ -338,9 +334,7 @@ public class InventarioViewController implements Initializable {
         limpiarFormulario();
     }
 
-    // ══════════════════════════════════════════════════════════════
-    //  ACTUALIZACIÓN DE VISTA
-    // ══════════════════════════════════════════════════════════════
+    // Actulización de Vista
 
     private void actualizarTodo() {
         actualizarIngredientes();

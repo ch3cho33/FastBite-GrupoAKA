@@ -12,26 +12,26 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.util.ArrayList;
 
-// Esta clase conecta la pantalla (FXML) con la lógica (ClienteController)
+// Esta clase conecta la pantalla FXML con la lógica ClienteController
 public class ClienteViewController {
 
     // Controlador principal
     private ClienteController controlador = new ClienteController();
 
-    // ── Campos REGISTRO ────────────────────────────────────────────
+    // Registro
     @FXML private TextField campoNombre;
     @FXML private TextField campoApellido;
     @FXML private TextField campoEmail;
     @FXML private TextField campoTelefono;
     @FXML private Label etiquetaMensajeRegistro;
 
-    // ── Campos PUNTOS ──────────────────────────────────────────────
+    // Puntos
     @FXML private TextField campoIdPuntos;
     @FXML private TextField campoCantidadPuntos;
     @FXML private TextField campoDescripcionPuntos;
     @FXML private Label etiquetaMensajePuntos;
 
-    // ── Tabla clientes ─────────────────────────────────────────────
+    // Tabla Clientes
     @FXML private TableView<Cliente> tablaClientes;
 
     @FXML private TableColumn<Cliente, Integer> columnaId;
@@ -41,7 +41,7 @@ public class ClienteViewController {
     @FXML private TableColumn<Cliente, Integer> columnaPuntos;
     @FXML private TableColumn<Cliente, String> columnaCategoria;
 
-    // ── Tabla historial ────────────────────────────────────────────
+    // Tabla Historial
     @FXML private TableView<MovimientoPuntos> tablaHistorial;
 
     @FXML private TableColumn<MovimientoPuntos, String> columnaHTipo;
@@ -49,11 +49,11 @@ public class ClienteViewController {
     @FXML private TableColumn<MovimientoPuntos, String> columnaHDescripcion;
     @FXML private TableColumn<MovimientoPuntos, String> columnaHFecha;
 
-    // ── Consulta ───────────────────────────────────────────────────
+    // Consulta
     @FXML private TextField campoIdConsulta;
     @FXML private Label etiquetaResultadoConsulta;
 
-    // ── Inicializar ────────────────────────────────────────────────
+    // Inicializar
     @FXML
     public void initialize() {
 
@@ -75,7 +75,7 @@ public class ClienteViewController {
         actualizarTablaHistorial();
     }
 
-    // ── Registrar cliente ──────────────────────────────────────────
+    // Registrar Cliente
     @FXML
     public void onClickRegistrar(ActionEvent evento) {
 
@@ -109,7 +109,7 @@ public class ClienteViewController {
         }
     }
 
-    // ── Agregar puntos ─────────────────────────────────────────────
+    // Agregar Puntos
     @FXML
     public void onClickAgregarPuntos(ActionEvent evento) {
 
@@ -181,7 +181,7 @@ public class ClienteViewController {
         }
     }
 
-    // ── Canjear puntos ─────────────────────────────────────────────
+    // Canjear Puntos
     @FXML
     public void onClickCanjearPuntos(ActionEvent evento) {
 
@@ -253,7 +253,7 @@ public class ClienteViewController {
         }
     }
 
-    // ── Consultar ──────────────────────────────────────────────────
+    // Consultar
     @FXML
     public void onClickConsultar(ActionEvent evento) {
 
@@ -311,7 +311,7 @@ public class ClienteViewController {
         }
     }
 
-    // ── Actualizar tabla clientes ─────────────────────────────────
+    // Actualizar Tabla Clientes
     private void actualizarTablaClientes() {
 
         ArrayList<Cliente> lista =
@@ -323,7 +323,7 @@ public class ClienteViewController {
         tablaClientes.setItems(datos);
     }
 
-    // ── Actualizar historial ──────────────────────────────────────
+    // Actualizar Historial
     private void actualizarTablaHistorial() {
 
         ArrayList<MovimientoPuntos> lista =

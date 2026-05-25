@@ -9,10 +9,12 @@ module com.fastbite {
     opens com.fastbite.controller to javafx.fxml;
     opens com.fastbite.persistence to com.google.gson;
     opens com.fastbite.util to javafx.fxml;
+    opens com.fastbite.exception to javafx.fxml;
 
     exports com.fastbite;
     exports com.fastbite.model;
     exports com.fastbite.controller;
     exports com.fastbite.util;
     exports com.fastbite.persistence;
+    exports com.fastbite.exception;
 }

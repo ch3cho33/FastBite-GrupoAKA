@@ -1,9 +1,7 @@
 package com.fastbite.model;
 
-/**
- * Estados posibles de un pedido en el sistema FastBite.
- * Usado por el módulo de Cocina para gestionar el flujo de preparación.
- */
+// Estados posibles de un pedido en el sistema FastBite.
+
 public enum EstadoPedido {
     PENDIENTE("Pendiente"),
     EN_PREPARACION("En preparación"),

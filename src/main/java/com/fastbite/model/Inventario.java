@@ -4,11 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * Entity: Controla las existencias generales de ingredientes.
- * GRASP Information Expert: conoce la cantidad disponible de cada ingrediente.
- * Singleton: existe un único inventario en el sistema.
- */
+
+ // Entity: Controla las existencias generales de ingredientes.
+ // GRASP Information Expert: conoce la cantidad disponible de cada ingrediente.
+
 public class Inventario {
 
     private static Inventario instancia;
@@ -25,7 +24,8 @@ public class Inventario {
         return instancia;
     }
 
-    /** Reemplaza la instancia (usado al cargar persistencia). */
+    // Reemplaza la instancia (usado al cargar persistencia)
+
     public static void setInstancia(Inventario inv) {
         instancia = inv;
     }
@@ -62,10 +62,9 @@ public class Inventario {
                 .findFirst();
     }
 
-    /**
-     * GRASP Information Expert: el Inventario sabe cuáles ingredientes
-     * están bajo el mínimo permitido.
-     */
+
+     //GRASP Information Expert: el Inventario sabe cuáles ingredientes están bajo el mínimo permitido.
+
     public List<Ingrediente> obtenerIngredientesBajoStock() {
         List<Ingrediente> alertas = new ArrayList<>();
         for (Ingrediente ing : listaIngredientes) {

@@ -2,10 +2,10 @@ package com.fastbite.model;
 
 import java.util.UUID;
 
-/**
- * Entity: Representa un producto del menú FastBite.
- * GRASP Information Expert: conoce su precio y estado activo.
- */
+
+ // Entity: Representa un producto del menú FastBite.
+ // GRASP Information Expert: conoce su precio y estado activo.
+
 public class Producto {
 
     private String id;

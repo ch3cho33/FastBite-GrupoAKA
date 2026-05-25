@@ -21,12 +21,12 @@
     <center>
         <TabPane tabClosingPolicy="UNAVAILABLE">
 
-            <!-- TAB INGREDIENTES -->
+
             <Tab text="Ingredientes">
                 <HBox spacing="12">
                     <padding><Insets top="12" right="12" bottom="12" left="12"/></padding>
 
-                    <!-- LADO IZQUIERDO: tabla -->
+
                     <VBox spacing="10" HBox.hgrow="ALWAYS">
                         <Label text="Ingredientes en Stock" styleClass="panel-title"/>
 
@@ -55,33 +55,33 @@
                         </HBox>
                     </VBox>
 
-                    <!-- LADO DERECHO: formulario -->
+
                     <VBox spacing="14" minWidth="340" prefWidth="340">
                         <padding><Insets top="4" right="4" bottom="4" left="4"/></padding>
                         <Label fx:id="lblTituloFormulario" text="Registrar Ingrediente" styleClass="panel-title"/>
 
-                        <!-- Nombre -->
+
                         <VBox spacing="4">
                             <Label text="Nombre *" styleClass="field-label"/>
                             <TextField fx:id="txtNombre" promptText="Ej: Harina de trigo"
                                        maxWidth="Infinity" prefWidth="300"/>
                         </VBox>
 
-                        <!-- Cantidad -->
+
                         <VBox spacing="4">
                             <Label text="Cantidad actual *" styleClass="field-label"/>
                             <TextField fx:id="txtCantidad" promptText="Ej: 25.5"
                                        maxWidth="Infinity" prefWidth="300"/>
                         </VBox>
 
-                        <!-- Unidad -->
+
                         <VBox spacing="4">
                             <Label text="Unidad *" styleClass="field-label"/>
                             <ComboBox fx:id="cmbUnidad" promptText="Seleccionar unidad"
                                       maxWidth="Infinity" prefWidth="300"/>
                         </VBox>
 
-                        <!-- Stock mínimo -->
+
                         <VBox spacing="4">
                             <Label text="Stock minimo *" styleClass="field-label"/>
                             <TextField fx:id="txtStockMinimo" promptText="Ej: 5.0"
@@ -90,7 +90,7 @@
 
                         <Separator/>
 
-                        <!-- Entrada de stock -->
+
                         <Label text="Registrar entrada de stock" styleClass="section-subtitle"/>
                         <HBox spacing="8" alignment="CENTER_LEFT">
                             <TextField fx:id="txtEntradaStock" promptText="Cantidad a ingresar"
@@ -102,7 +102,7 @@
 
                         <Region VBox.vgrow="ALWAYS"/>
 
-                        <!-- Botones guardar -->
+
                         <HBox spacing="8" alignment="CENTER_RIGHT">
                             <Button text="Limpiar" styleClass="btn-secondary"
                                     onAction="#handleLimpiarFormulario"/>
@@ -115,7 +115,7 @@
                 </HBox>
             </Tab>
 
-            <!-- TAB ALERTAS -->
+
             <Tab text="Alertas de Stock">
                 <VBox spacing="12">
                     <padding><Insets top="16" right="16" bottom="16" left="16"/></padding>
@@ -140,7 +140,7 @@
                 </VBox>
             </Tab>
 
-            <!-- TAB MOVIMIENTOS -->
+
             <Tab text="Movimientos">
                 <VBox spacing="12">
                     <padding><Insets top="16" right="16" bottom="16" left="16"/></padding>

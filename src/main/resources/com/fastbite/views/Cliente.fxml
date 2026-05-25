@@ -5,33 +5,33 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Text?>
 
-<!-- fx:controller conecta este archivo con ClienteViewController -->
+
 <VBox xmlns="http://javafx.com/javafx/21"
       xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.fastbite.controller.ClienteViewController"
       spacing="0"
       style="-fx-background-color: #0D1117;">
 
-    <!-- ══ ENCABEZADO ══════════════════════════════════════════════ -->
+
     <HBox style="-fx-background-color: #161B22; -fx-padding: 16 24; -fx-border-color: #30363D; -fx-border-width: 0 0 1 0;">
         <Label text="⭐ Sistema de Fidelización"
                style="-fx-text-fill: #E6EDF3; -fx-font-size: 20px; -fx-font-weight: bold;"/>
     </HBox>
 
-    <!-- ══ PESTAÑAS ════════════════════════════════════════════════ -->
+
     <TabPane VBox.vgrow="ALWAYS"
              style="-fx-background-color: #0D1117; -fx-tab-min-height: 38px;">
 
-        <!-- ══ PESTAÑA 1: Registrar Cliente ══════════════════════ -->
+
         <Tab text="➕  Registrar Cliente" closable="false">
             <VBox spacing="0" style="-fx-background-color: #0D1117;">
 
-                <!-- Formulario -->
+
                 <VBox spacing="14" style="-fx-background-color: #161B22; -fx-padding: 24; -fx-border-color: #30363D; -fx-border-width: 0 0 1 0;">
                     <Label text="Datos del nuevo cliente"
                            style="-fx-text-fill: #8B949E; -fx-font-size: 12px;"/>
 
-                    <!-- Fila 1: Nombre y Apellido -->
+
                     <HBox spacing="12">
                         <VBox spacing="5" HBox.hgrow="ALWAYS">
                             <Label text="Nombre *" style="-fx-text-fill: #E6EDF3;"/>
@@ -47,7 +47,7 @@
                         </VBox>
                     </HBox>
 
-                    <!-- Fila 2: Email y Teléfono -->
+
                     <HBox spacing="12">
                         <VBox spacing="5" HBox.hgrow="ALWAYS">
                             <Label text="Email *" style="-fx-text-fill: #E6EDF3;"/>
@@ -63,18 +63,18 @@
                         </VBox>
                     </HBox>
 
-                    <!-- Botón registrar -->
+
                     <Button text="Registrar Cliente"
                             onAction="#onClickRegistrar"
                             style="-fx-background-color: #238636; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6; -fx-padding: 10 20; -fx-cursor: hand;"
                             maxWidth="200"/>
 
-                    <!-- Mensaje de resultado -->
+
                     <Label fx:id="etiquetaMensajeRegistro" text="" wrapText="true"
                            style="-fx-font-size: 13px;"/>
                 </VBox>
 
-                <!-- Tabla de clientes -->
+
                 <VBox spacing="8" VBox.vgrow="ALWAYS" style="-fx-padding: 16;">
                     <Label text="Clientes registrados"
                            style="-fx-text-fill: #8B949E; -fx-font-size: 12px;"/>
@@ -97,14 +97,14 @@
             </VBox>
         </Tab>
 
-        <!-- ══ PESTAÑA 2: Puntos ══════════════════════════════════ -->
+
         <Tab text="Puntos" closable="false">
             <VBox spacing="20" style="-fx-background-color: #0D1117; -fx-padding: 24;">
 
                 <Label text="Gestión de puntos"
                        style="-fx-text-fill: #8B949E; -fx-font-size: 12px;"/>
 
-                <!-- Formulario de puntos -->
+
                 <VBox spacing="12" style="-fx-background-color: #161B22; -fx-padding: 20; -fx-border-color: #30363D; -fx-border-radius: 8; -fx-background-radius: 8;">
 
                     <HBox spacing="12">
@@ -130,7 +130,7 @@
                         </VBox>
                     </HBox>
 
-                    <!-- Botones -->
+
                     <HBox spacing="10">
                         <Button text="➕  Agregar Puntos"
                                 onAction="#onClickAgregarPuntos"
@@ -144,7 +144,7 @@
                            style="-fx-font-size: 13px;"/>
                 </VBox>
 
-                <!-- Historial -->
+
                 <VBox spacing="8" VBox.vgrow="ALWAYS">
                     <Label text="Historial de movimientos"
                            style="-fx-text-fill: #8B949E; -fx-font-size: 12px;"/>
@@ -165,7 +165,7 @@
             </VBox>
         </Tab>
 
-        <!-- ══ PESTAÑA 3: Consultar ═══════════════════════════════ -->
+
         <Tab text="🔍  Consultar" closable="false">
             <VBox spacing="16" style="-fx-background-color: #0D1117; -fx-padding: 24;">
                 <Label text="Consultar puntos de un cliente"

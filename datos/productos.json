@@ -1,0 +1,26 @@
+[
+  {
+    "id": "e4fd20dc-2b5c-4241-8611-5c032da6a33b",
+    "nombre": "Coca-Cola Zero",
+    "descripcion": "Producto Coca-Cola sin azucar",
+    "precio": 4000.0,
+    "activo": true,
+    "categoriaId": "Bebidas"
+  },
+  {
+    "id": "7af2d94c-ca20-42cd-b144-d93a945c66c4",
+    "nombre": "Hamburguesa Criolla",
+    "descripcion": "",
+    "precio": 30000.0,
+    "activo": true,
+    "categoriaId": "Hamburguesas"
+  },
+  {
+    "id": "3957463f-16d7-43f2-9ea8-f2780288a189",
+    "nombre": "Papa Francesa",
+    "descripcion": "Porcion de papa francesa 200g",
+    "precio": 7000.0,
+    "activo": true,
+    "categoriaId": "Acompañamientos"
+  }
+]

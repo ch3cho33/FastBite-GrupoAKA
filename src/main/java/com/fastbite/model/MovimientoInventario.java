@@ -4,9 +4,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
-/**
- * Entity: Registra cada entrada o salida de stock para trazabilidad.
- */
+// Entity: Registra cada entrada o salida de stock para trazabilidad.
+
 public class MovimientoInventario {
 
     public enum TipoMovimiento {

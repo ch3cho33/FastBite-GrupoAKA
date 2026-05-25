@@ -7,11 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * Control: Coordina entradas, salidas y validaciones del inventario.
- * GRASP Controller: caso de uso "Gestionar Inventario".
- * GRASP Low Coupling: la vista (InventarioView) solo habla con este controller.
- */
+  // Control: Coordina entradas, salidas y validaciones del inventario.
+  // GRASP Controller: caso de uso "Gestionar Inventario".
+  // GRASP Low Coupling: la vista InventarioView solo habla con este controller.
+
 public class InventarioController {
 
     private static InventarioController instancia;
@@ -33,12 +32,9 @@ public class InventarioController {
         return instancia;
     }
 
-    // ======================== INGREDIENTES ========================
+    // Ingredientes
 
-    /**
-     * Registra un nuevo ingrediente en el inventario.
-     * Valida que la cantidad y stock mínimo sean válidos.
-     */
+    // Registrar ingredientes y valida stock
     public void registrarIngrediente(String nombre, double cantidad,
                                      double stockMinimo, String unidad) {
         validarNombre(nombre);
@@ -59,9 +55,8 @@ public class InventarioController {
         guardarDatos();
     }
 
-    /**
-     * Registra una entrada de stock para un ingrediente existente.
-     */
+    // Registrar stock de ingrediente ya existente
+
     public void registrarEntradaStock(String ingredienteId, double cantidad) {
         if (cantidad <= 0) throw new IllegalArgumentException("La cantidad debe ser mayor a 0.");
 
@@ -84,17 +79,15 @@ public class InventarioController {
         guardarDatos();
     }
 
-    /**
-     * Descuenta stock de un ingrediente. Usado por CocinaController
-     * cuando se confirma la preparación de un pedido (integración clave).
-     */
+    // Descuenta stock de un ingrediente al confirmar preparación de pedido
     public void descontarStock(String ingredienteId, double cantidad, String referenciaPedido) {
         if (cantidad <= 0) throw new IllegalArgumentException("La cantidad debe ser mayor a 0.");
 
         Ingrediente ingrediente = obtenerIngredientePorId(ingredienteId);
         double stockAntes = ingrediente.getCantidad();
 
-        ingrediente.descontarStock(cantidad); // lanza IllegalStateException si no alcanza
+        // Excepción
+        ingrediente.descontarStock(cantidad);
         inventario.actualizarIngrediente(ingrediente);
 
         MovimientoInventario mov = registrarMovimientoInterno(
@@ -106,9 +99,7 @@ public class InventarioController {
         guardarDatos();
     }
 
-    /**
-     * Actualiza los datos de un ingrediente existente (nombre, unidad, stock mínimo).
-     */
+    // Actualiza datos de un ingrediente existente
     public void actualizarIngrediente(Ingrediente ingredienteActualizado) {
         validarNombre(ingredienteActualizado.getNombre());
         inventario.actualizarIngrediente(ingredienteActualizado);
@@ -116,7 +107,7 @@ public class InventarioController {
         guardarDatos();
     }
 
-    // ======================== CONSULTAS ========================
+    // Consultas
 
     public List<Ingrediente> obtenerIngredientes() {
         return new ArrayList<>(inventario.getListaIngredientes());
@@ -144,7 +135,7 @@ public class InventarioController {
         return inventario.obtenerIngredientesBajoStock();
     }
 
-    // ======================== PRIVADOS ========================
+    // Métodos privados
 
     private Ingrediente obtenerIngredientePorId(String id) {
         return inventario.buscarPorId(id)
@@ -182,7 +173,7 @@ public class InventarioController {
         }
     }
 
-    // ======================== PERSISTENCIA ========================
+    // Persistencia
 
     private void cargarDatos() {
         List<Ingrediente> ingredientes = persistencia.cargarIngredientes();

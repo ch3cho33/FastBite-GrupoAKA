@@ -4,10 +4,9 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
-/**
- * Entity: Representa una alerta generada cuando un ingrediente
- * baja su stock por debajo del nivel mínimo.
- */
+
+ // Entity: Representa una alerta generada cuando un ingrediente baja su stock por debajo del nivel mínimo.
+
 public class AlertaStock {
 
     public enum NivelAlerta {

@@ -6,7 +6,7 @@
     "mensaje": "Revisar stock de \u0027Queso\u0027.",
     "nivel": "INFORMATIVO",
     "fechaGeneracion": "2026-05-17T15:50:25.624142",
-    "resuelta": false
+    "resuelta": true
   },
   {
     "id": "eddba157-5e85-429a-a4f1-70cde1a38f5d",
@@ -15,6 +15,6 @@
     "mensaje": "Stock bajo de \u0027Pollo\u0027: 2.00 kg disponibles.",
     "nivel": "BAJO",
     "fechaGeneracion": "2026-05-17T15:50:25.627188",
-    "resuelta": false
+    "resuelta": true
   }
 ]
