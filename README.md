@@ -36,7 +36,7 @@ El sistema fue construido aplicando principios de programación orientada a obje
 - Java 21
 - JavaFX 21 + FXML
 - Maven
-- Json 2.10.1
+- Gson 2.10.1
 - Git y GitHub
 - IntelliJ IDEA
 - Draw.io
